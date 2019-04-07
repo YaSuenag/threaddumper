@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (C) 2019 Yasumasa Suenaga
+
+  This file is part of ThreadDumper.
+
+  UL Viewer is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  ThreadDumper is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public License
+  along with ThreadDumper.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.yasuenag.threaddumper.MainController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#onOpenClicked" text="Open" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" onAction="#onCloseClicked" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <SplitPane dividerPositions="0.3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" orientation="VERTICAL" VBox.vgrow="ALWAYS">
+        <items>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+               <children>
+                  <HBox alignment="TOP_CENTER" spacing="20.0">
+                     <children>
+                        <Label text="Sort order" />
+                        <RadioButton mnemonicParsing="false" selected="true" text="nid" userData="nid">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="sortOrder" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" text="Thread name" toggleGroup="$sortOrder" userData="threadName" />
+                        <RadioButton mnemonicParsing="false" text="CPU time" toggleGroup="$sortOrder" userData="cpuTime" />
+                        <RadioButton mnemonicParsing="false" text="Memory allocation" toggleGroup="$sortOrder" userData="memoryAllocation" />
+                        <Separator orientation="VERTICAL" />
+                        <Label text="Direction" />
+                        <RadioButton mnemonicParsing="false" selected="true" text="ASC">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="sortDirection" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="sortDirectionDESC" mnemonicParsing="false" text="DESC" toggleGroup="$sortDirection" />
+                     </children>
+                  </HBox>
+                  <ListView fx:id="threadList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <TableView fx:id="timeseriesTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0"/>
+        </items>
+      </SplitPane>
+   </children>
+</VBox>

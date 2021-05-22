@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-  Copyright (C) 2019 Yasumasa Suenaga
+  Copyright (C) 2019, 2021, Yasumasa Suenaga
 
   This file is part of ThreadDumper.
 
@@ -33,15 +33,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mainClass>com.yasuenag.threaddumper.Bootstrap</mainClass>
         <imageName>${project.artifactId}-${project.version}</imageName>
-        <maven.compiler.source>12</maven.compiler.source>
-        <maven.compiler.target>12</maven.compiler.target>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
     </properties>
     
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>12</version>
+            <version>16</version>
         </dependency>
     </dependencies>
 
@@ -50,11 +50,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
                 <configuration>
                     <compilerArgs>
                         <arg>-Xlint:all</arg>
-                        <arg>--enable-preview</arg>
                     </compilerArgs>
                 </configuration>
             </plugin>
@@ -99,25 +98,6 @@
                                 <argument>--no-header-files</argument>
                                 <argument>--no-man-pages</argument>
                             </arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <replace dir="${project.build.directory}/${imageName}/bin" token="JLINK_VM_OPTIONS=" value="JLINK_VM_OPTIONS=--enable-preview" includes="${project.artifactId}*"/>
-                                <chmod dir="${project.build.directory}/${imageName}/bin" perm="ugo+rx" includes="${project.artifactId}*"/>
-                            </target>
                         </configuration>
                     </execution>
                 </executions>

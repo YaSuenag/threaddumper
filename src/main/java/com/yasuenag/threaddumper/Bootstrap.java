@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Yasumasa Suenaga
+ * Copyright (C) 2019, 2023, Yasumasa Suenaga
  *
  * This file is part of ThreadDumper.
  *
@@ -30,7 +30,7 @@ public class Bootstrap extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        var loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+        var loader = new FXMLLoader(Bootstrap.class.getResource("/fxml/main.fxml"));
         Parent root = loader.load();
         
         Scene scene = new Scene(root);

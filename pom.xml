@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-  Copyright (C) 2019, 2021, Yasumasa Suenaga
+  Copyright (C) 2019, 2023, Yasumasa Suenaga
 
   This file is part of ThreadDumper.
 
@@ -126,6 +126,18 @@
             <properties>
                 <package.os.name>windows</package.os.name>
                 <exec.suffix>.exe</exec.suffix>
+            </properties>
+        </profile>
+        <profile>
+            <id>mac</id>
+            <activation>
+                <os>
+                    <name>mac</name>
+                </os>
+            </activation>
+            <properties>
+                <package.os.name>mac</package.os.name>
+                <exec.suffix/>
             </properties>
         </profile>
     </profiles>

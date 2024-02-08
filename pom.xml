@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-  Copyright (C) 2019, 2023, Yasumasa Suenaga
+  Copyright (C) 2019, 2024, Yasumasa Suenaga
 
   This file is part of ThreadDumper.
 
@@ -33,15 +33,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mainClass>com.yasuenag.threaddumper.Bootstrap</mainClass>
         <imageName>${project.artifactId}-${project.version}</imageName>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
     </properties>
     
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>17.0.0.1</version>
+            <version>21.0.2</version>
         </dependency>
     </dependencies>
 
@@ -60,11 +60,10 @@
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.6</version>
+                <version>0.0.8</version>
                 <configuration>
                     <mainClass>com.yasuenag.threaddumper/${mainClass}</mainClass>
                     <launcher>threaddumper</launcher>
-                    <compress>2</compress>
                     <noHeaderFiles>true</noHeaderFiles>
                     <noManPages>true</noManPages>
 		    <jlinkImageName>${imageName}</jlinkImageName>
